@@ -105,7 +105,7 @@ void workManager::addEmp()
         this->empArry = newSpace;
         this->Enum = newNum;
         this->fileIsEmpty = false;
-
+        cout<<"添加成功"<<endl;
         
     }
     else
@@ -293,4 +293,45 @@ void workManager::changeEmp()
         break;
     }
     this->save();
+    cout<<"修改成功"<<endl;
+}
+
+void workManager::sortEmp()
+{
+    Worker* tempWork;
+    for(int i = 0;i<(this->Enum-1);i++)
+    {
+        for(int j = 0;j<(this->Enum-i-1);j++)
+        {
+            if(this->empArry[j]->wId>this->empArry[j+1]->wId)
+            {
+                tempWork = this->empArry[j];
+                this->empArry[j]=this->empArry[j+1];
+                this->empArry[j+1]=tempWork;
+            }
+        }
+    }
+    this->save();
+    cout<<"排序成功"<<endl;
+}
+
+void workManager::clearEmp()
+{
+    ofstream ofs(fileName,ios::trunc);
+    ofs.close();
+    if(this->empArry!=NULL)
+    {
+        for(int i = 0;i<this->Enum;i++)
+        {
+            if(this->empArry[i]!=NULL)
+            {
+                delete this->empArry[i];
+            }
+        }
+        this->Enum = 0;
+        delete[] this->empArry;
+        this->empArry = NULL;
+        this->fileIsEmpty = true;
+        cout<<"删除成功"<<endl;
+    }
 }

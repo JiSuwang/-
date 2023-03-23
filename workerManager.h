@@ -52,6 +52,12 @@ class workManager
         //修改员工信息
         void changeEmp();
 
+        //对员工按照编号排序
+        void sortEmp();
+
+        //清空文档
+        void clearEmp();
+
         int Enum;
         Worker** empArry;
         bool fileIsEmpty;

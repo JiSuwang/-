@@ -42,9 +42,10 @@ int main()
                 wm.checkEmp();
                 break;
             case 6://排序职工
-                
+                wm.sortEmp();
                 break;
             case 7://清空文档
+                wm.clearEmp();
                 break;
         }
 
